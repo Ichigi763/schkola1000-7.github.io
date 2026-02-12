@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Расписание 1–11 и календарь 2025/2026 — Школа №1000</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="pageFade" class="page-fade"></div>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="logo" href="index.html"><i class="ti ti-school"></i><span>Школа №1000</span></a>
+        <nav class="menu">
+          <a href="index.html"><i class="ti ti-home"></i>Главная</a>
+          <a href="#classSchedule"><i class="ti ti-list-details"></i>По классам</a>
+          <a href="#calendar"><i class="ti ti-calendar-month"></i>Календарь</a>
+        </nav>
+        <button id="themeToggle" class="theme-btn"><i class="ti ti-moon-stars"></i><span>Тёмная</span></button>
+      </div>
+    </header>
+
+    <main class="container section">
+      <h1><i class="ti ti-calendar-event"></i>Расписание для 1–11 классов</h1>
+      <p class="muted">В этом разделе отображается примерное недельное расписание для всех классов и полный календарь на 2025 и 2026 годы.</p>
+
+      <section id="classSchedule" class="section">
+        <h2><i class="ti ti-school"></i>Классы и предметы</h2>
+        <div id="classScheduleGrid" class="grid three"></div>
+      </section>
+
+      <section id="calendar" class="section">
+        <h2><i class="ti ti-calendar-stats"></i>Полный календарь на 2025 и 2026</h2>
+        <div id="calendarGrid" class="calendar-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Школа №1000</p></div></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
