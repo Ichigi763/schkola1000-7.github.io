@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Школа «Лицей Будущего»</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="container nav">
+        <div class="logo-wrap">
+          <i class="ti ti-school logo-icon"></i>
+          <span class="logo-text">Лицей Будущего</span>
+        </div>
+
+        <button id="themeToggle" class="theme-toggle" aria-label="Сменить тему">
+          <i class="ti ti-sun-high"></i>
+          <span>Светлая тема</span>
+        </button>
+      </nav>
+
+      <div class="container hero-content">
+        <div>
+          <p class="badge"><i class="ti ti-stars"></i> Современная частная школа</p>
+          <h1>Качественное образование, дружелюбная атмосфера и развитие талантов</h1>
+          <p class="lead">
+            Мы объединяем сильных учителей, удобное расписание и современные подходы к
+            обучению, чтобы каждый ученик раскрывал свой потенциал.
+          </p>
+          <a href="#schedule" class="primary-btn">Посмотреть расписание</a>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80"
+          alt="Ученики в школе"
+          class="hero-image"
+        />
+      </div>
+    </header>
+
+    <main>
+      <section class="section container" id="schedule">
+        <h2><i class="ti ti-calendar-event"></i> Расписание на сегодня</h2>
+        <div class="schedule-grid">
+          <article class="card schedule-card">
+            <h3>5-А класс</h3>
+            <ul>
+              <li><span>08:30</span> Математика</li>
+              <li><span>09:25</span> Русский язык</li>
+              <li><span>10:20</span> Английский</li>
+              <li><span>11:30</span> Окружающий мир</li>
+            </ul>
+          </article>
+          <article class="card schedule-card">
+            <h3>8-Б класс</h3>
+            <ul>
+              <li><span>08:30</span> Геометрия</li>
+              <li><span>09:25</span> История</li>
+              <li><span>10:20</span> Физика</li>
+              <li><span>11:30</span> Информатика</li>
+            </ul>
+          </article>
+          <article class="card schedule-card">
+            <h3>11-А класс</h3>
+            <ul>
+              <li><span>08:30</span> Литература</li>
+              <li><span>09:25</span> Алгебра</li>
+              <li><span>10:20</span> Химия</li>
+              <li><span>11:30</span> Подготовка к ЕГЭ</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container" id="teachers">
+        <h2><i class="ti ti-users"></i> Наши учителя</h2>
+        <div class="teachers-grid">
+          <article class="card teacher-card">
+            <img
+              src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80"
+              alt="Учитель математики"
+            />
+            <div>
+              <h3>Ольга Викторовна</h3>
+              <p class="subject">Математика</p>
+              <p>Победитель конкурса «Учитель года», 15 лет опыта подготовки к олимпиадам.</p>
+            </div>
+          </article>
+
+          <article class="card teacher-card">
+            <img
+              src="https://images.unsplash.com/photo-1601412436009-d964bd02edbc?auto=format&fit=crop&w=600&q=80"
+              alt="Учитель английского языка"
+            />
+            <div>
+              <h3>Артём Игоревич</h3>
+              <p class="subject">Английский язык</p>
+              <p>Проводит разговорные клубы и готовит к международным экзаменам.</p>
+            </div>
+          </article>
+
+          <article class="card teacher-card">
+            <img
+              src="https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&w=600&q=80"
+              alt="Учитель информатики"
+            />
+            <div>
+              <h3>Елена Сергеевна</h3>
+              <p class="subject">Информатика</p>
+              <p>Развивает IT-направление: Python, веб-разработка и робототехника.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container features">
+        <h2><i class="ti ti-award"></i> Почему выбирают нашу школу</h2>
+        <div class="feature-grid">
+          <article class="card feature-card">
+            <i class="ti ti-device-laptop"></i>
+            <h3>Современные классы</h3>
+            <p>Интерактивные доски, лаборатории и удобные пространства для проектов.</p>
+          </article>
+          <article class="card feature-card">
+            <i class="ti ti-heart-handshake"></i>
+            <h3>Забота о детях</h3>
+            <p>Психологическая поддержка, кружки и безопасная школьная среда.</p>
+          </article>
+          <article class="card feature-card">
+            <i class="ti ti-bus-school"></i>
+            <h3>Удобство для родителей</h3>
+            <p>Электронный дневник, продлёнка и школьный автобус по городу.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>© 2026 Лицей Будущего</p>
+        <p><i class="ti ti-map-pin"></i> г. Алматы, ул. Знаний, 12</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
