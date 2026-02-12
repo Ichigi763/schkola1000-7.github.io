@@ -1,493 +1,278 @@
-:root {
-  --bg: #f5f7ff;
-  --bg-elev: #ffffff;
-  --text: #1a1f36;
-  --text-soft: #4d5570;
-  --primary: #5268ff;
-  --primary-soft: #e7ebff;
-  --border: #dce3ff;
-  --shadow: 0 10px 30px rgba(37, 52, 130, 0.1);
-}
-
-html[data-theme='dark'] {
-  --bg: #0f1324;
-  --bg-elev: #1a2038;
-  --text: #eef2ff;
-  --text-soft: #aeb8dd;
-  --primary: #92a1ff;
-  --primary-soft: #273267;
-  --border: #2d3768;
-  --shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: 'Manrope', sans-serif;
-  background: radial-gradient(circle at top right, rgba(82, 104, 255, 0.18), transparent 40%), var(--bg);
-  color: var(--text);
-  line-height: 1.55;
-}
-
-.container {
-  width: min(1140px, 92vw);
-  margin: 0 auto;
-}
-
-.hero {
-  padding: 22px 0 48px;
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  position: sticky;
-  top: 10px;
-  background: color-mix(in srgb, var(--bg-elev) 80%, transparent);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 10px 14px;
-  backdrop-filter: blur(6px);
-  z-index: 4;
-}
-
-.logo-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: var(--text);
-}
-
-.logo-icon {
-  font-size: 1.7rem;
-  color: var(--primary);
-}
-
-.logo-text {
-  font-weight: 800;
-}
-
-.nav-links {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--text-soft);
-  font-weight: 700;
-  transition: color 0.25s ease;
-}
-
-.nav-links a:hover {
-  color: var(--primary);
-}
-
-.theme-toggle {
-  border: 1px solid var(--border);
-  background: var(--bg-elev);
-  color: var(--text);
-  border-radius: 999px;
-  padding: 10px 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-}
-
-.hero-content {
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 30px;
-  align-items: center;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: var(--primary-soft);
-  color: var(--primary);
-  font-weight: 700;
-}
-
-h1 {
-  margin: 12px 0 0;
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.1;
-}
-
-.lead {
-  color: var(--text-soft);
-  max-width: 58ch;
-  margin: 16px 0 24px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.primary-btn,
-.ghost-btn {
-  display: inline-flex;
-  text-decoration: none;
-  padding: 12px 18px;
-  border-radius: 12px;
-  font-weight: 700;
-  border: 1px solid transparent;
-}
-
-.primary-btn {
-  background: var(--primary);
-  color: white;
-}
-
-.ghost-btn {
-  border-color: var(--border);
-  color: var(--text);
-  background: var(--bg-elev);
-}
-
-.hero-image {
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  aspect-ratio: 4/3;
-  object-fit: cover;
-}
-
-.stats {
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.card {
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-}
-
-.stat-card {
-  padding: 18px;
-}
-
-.stat-card h3 {
-  margin: 0;
-  font-size: 2rem;
-  color: var(--primary);
-}
-
-.stat-card p {
-  margin: 6px 0 0;
-  color: var(--text-soft);
-}
-
-.section {
-  padding: 36px 0;
-}
-
-h2 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 18px;
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-}
-
-.schedule-grid,
-.events-grid,
-.plans-grid,
-.teachers-grid,
-.gallery-grid,
-.contacts-grid,
-.calendar-layout {
-  display: grid;
-  gap: 18px;
-}
-
-.schedule-grid,
-.events-grid,
-.plans-grid,
-.teachers-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.schedule-card,
-.event-card,
-.plan-card {
-  padding: 20px;
-}
-
-.schedule-card ul,
-.plan-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 12px 0 0;
-}
-
-.schedule-card li,
-.plan-card li {
-  border-bottom: 1px dashed var(--border);
-  padding: 8px 0;
-}
-
-.schedule-card li {
-  display: flex;
-  justify-content: space-between;
-}
-
-.schedule-card span {
-  color: var(--text-soft);
-}
-
-.event-date {
-  margin: 0;
-  color: var(--primary);
-  font-weight: 700;
-}
-
-.plan-card h3 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 0;
-}
-
-.canteen-card {
-  padding: 8px;
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  border-bottom: 1px solid var(--border);
-  padding: 12px;
-  text-align: left;
-}
-
-th {
-  color: var(--text-soft);
-  font-weight: 700;
-}
-
-.calendar-layout {
-  grid-template-columns: 2fr 1fr;
-}
-
-.calendar-card,
-.holiday-card {
-  padding: 18px;
-}
-
-.calendar-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.pill {
-  background: var(--primary-soft);
-  color: var(--primary);
-  border-radius: 999px;
-  padding: 4px 10px;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.weekdays,
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.weekdays span {
-  text-align: center;
-  font-weight: 700;
-  color: var(--text-soft);
-}
-
-.day {
-  border: 1px solid var(--border);
-  min-height: 56px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  font-weight: 600;
-}
-
-.day.muted {
-  opacity: 0.4;
-}
-
-.day.today {
-  background: var(--primary-soft);
-  color: var(--primary);
-  border-color: transparent;
-}
-
-.day.holiday {
-  outline: 2px solid #ff9ca8;
-}
-
-.holiday-card ul {
-  margin: 10px 0 0;
-  padding-left: 18px;
-}
-
-.teacher-card {
-  overflow: hidden;
-  transition: transform 0.25s ease;
-}
-
-.teacher-card:hover {
-  transform: translateY(-4px);
-}
-
-.teacher-card img {
-  width: 100%;
-  height: 235px;
-  object-fit: cover;
-}
-
-.teacher-card div {
-  padding: 16px;
-}
-
-.subject {
-  color: var(--primary);
-  font-weight: 700;
-}
-
-.gallery-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.gallery-grid img {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-}
-
-.contacts-grid {
-  grid-template-columns: 1fr 1fr;
-}
-
-.contacts-card,
-.form-card {
-  padding: 18px;
-}
-
-.contacts-card p {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.form-card {
-  display: grid;
-  gap: 10px;
-}
-
-label {
-  display: grid;
-  gap: 6px;
-  font-weight: 600;
-}
-
-input,
-textarea {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg);
-  color: var(--text);
-  padding: 10px;
-  font-family: inherit;
-}
-
-.footer {
-  margin-top: 16px;
-  border-top: 1px solid var(--border);
-  padding: 22px 0;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  color: var(--text-soft);
-}
-
-html.js .reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: all 0.7s ease;
-}
-
-html.js .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+// ================== ТЕМА (светлая/тёмная) ==================
+const themeToggle = document.getElementById("themeToggle");
+const root = document.documentElement;
+
+function setTheme(theme) {
+  root.setAttribute("data-theme", theme);
+  const icon = themeToggle.querySelector("i");
+  const text = themeToggle.querySelector("span");
+
+  if (theme === "dark") {
+    icon.className = "ti ti-moon";
+    text.textContent = "Тёмная тема";
+  } else {
+    icon.className = "ti ti-sun-high";
+    text.textContent = "Светлая тема";
   }
-
-  html.js .reveal,
-  html.js .reveal.visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+  localStorage.setItem("theme", theme);
 }
 
-@media (max-width: 980px) {
-  .hero-content,
-  .schedule-grid,
-  .events-grid,
-  .plans-grid,
-  .teachers-grid,
-  .gallery-grid,
-  .contacts-grid,
-  .stats,
-  .calendar-layout {
-    grid-template-columns: 1fr;
-  }
+setTheme(localStorage.getItem("theme") || "light");
 
-  .nav {
-    flex-wrap: wrap;
-  }
+themeToggle.addEventListener("click", () => {
+  const current = root.getAttribute("data-theme");
+  setTheme(current === "light" ? "dark" : "light");
+});
 
-  .footer-content {
-    flex-direction: column;
-    gap: 6px;
-  }
+// ================== ПЛАВНАЯ ПРОКРУТКА ПО ЯКОРЯМ ==================
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener("click", (e) => {
+    const id = a.getAttribute("href");
+    const el = document.querySelector(id);
+    if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    history.pushState(null, "", id);
+  });
+});
+
+// ================== REVEAL (появление секций) ==================
+const revealEls = document.querySelectorAll(".reveal");
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(ent => {
+    if (ent.isIntersecting) ent.target.classList.add("show");
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(el => revealObs.observe(el));
+
+// ================== СКРОЛЛ-ПРОГРЕСС + КНОПКА "НАВЕРХ" ==================
+const scrollProgress = document.getElementById("scrollProgress");
+const toTop = document.getElementById("toTop");
+
+function onScroll() {
+  const h = document.documentElement;
+  const scrolled = h.scrollTop;
+  const max = h.scrollHeight - h.clientHeight;
+  const p = max > 0 ? (scrolled / max) * 100 : 0;
+  scrollProgress.style.width = `${p}%`;
+
+  if (scrolled > 500) toTop.classList.add("show");
+  else toTop.classList.remove("show");
 }
+window.addEventListener("scroll", onScroll);
+onScroll();
+
+toTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// ================== ГОД В ФУТЕРЕ ==================
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// ================== ДАННЫЕ УЧИТЕЛЕЙ (БОЛЬШЕ) ==================
+const teachers = [
+  {
+    name: "Ольга Викторовна",
+    subject: "Математика",
+    desc: "Победитель «Учитель года», 15 лет опыта подготовки к олимпиадам.",
+    photo: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80",
+    cabinet: "205",
+    email: "math@licei-bud.kz"
+  },
+  {
+    name: "Артём Игоревич",
+    subject: "Английский язык",
+    desc: "Разговорные клубы, подготовка к международным экзаменам, проекты на английском.",
+    photo: "https://images.unsplash.com/photo-1601412436009-d964bd02edbc?auto=format&fit=crop&w=1000&q=80",
+    cabinet: "210",
+    email: "eng@licei-bud.kz"
+  },
+  {
+    name: "Елена Сергеевна",
+    subject: "Информатика",
+    desc: "Python, веб-разработка и робототехника. Помогает собрать портфолио.",
+    photo: "https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&w=1000&q=80",
+    cabinet: "402",
+    email: "it@licei-bud.kz"
+  },
+  {
+    name: "Сергей Константинович",
+    subject: "Физика",
+    desc: "Лабораторные, эксперименты и подготовка к олимпиадам. Стаж 12 лет.",
+    photo: "https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=1000&q=80",
+    cabinet: "320",
+    email: "physics@licei-bud.kz"
+  },
+  {
+    name: "Наталья Николаевна",
+    subject: "Музыка",
+    desc: "Вокал, ансамбль и выступления. Готовит школьные концерты.",
+    photo: "https://images.unsplash.com/photo-1524503033411-fd26f86da3e0?auto=format&fit=crop&w=1000&q=80",
+    cabinet: "217",
+    email: "music@licei-bud.kz"
+  },
+  {
+    name: "Ирина Михайловна",
+    subject: "История",
+    desc: "Дебаты, анализ источников, подготовка к экзаменам и проектным работам.",
+    photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80",
+    cabinet: "301",
+    email: "history@licei-bud.kz"
+  },
+  {
+    name: "Данияр Рустемович",
+    subject: "Химия",
+    desc: "Практикумы, безопасные опыты, олимпиадная подготовка. Стаж 10 лет.",
+    photo: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1000&q=80",
+    cabinet: "312",
+    email: "chem@licei-bud.kz"
+  },
+  {
+    name: "Виктория Андреевна",
+    subject: "Биология",
+    desc: "Кружок «Юный биолог», проекты и экология. Много практики.",
+    photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1000&q=80",
+    cabinet: "318",
+    email: "bio@licei-bud.kz"
+  }
+];
+
+const teachersSlider = document.getElementById("teachersSlider");
+
+function renderTeachers() {
+  teachersSlider.innerHTML = "";
+  teachers.forEach(t => {
+    const card = document.createElement("article");
+    card.className = "card teacher-card";
+    card.innerHTML = `
+      <img src="${t.photo}" alt="${t.subject}" loading="lazy" />
+      <div class="pad">
+        <h3>${t.name}</h3>
+        <p class="subject">${t.subject}</p>
+        <p class="muted">${t.desc}</p>
+        <div class="teacher-meta">
+          <span class="pill"><i class="ti ti-door"></i> Каб. ${t.cabinet}</span>
+          <span class="pill"><i class="ti ti-mail"></i> ${t.email}</span>
+        </div>
+      </div>
+    `;
+    teachersSlider.appendChild(card);
+  });
+}
+renderTeachers();
+
+// Плавное "перелистывание" слайдера
+const prevBtn = document.getElementById("teachersPrev");
+const nextBtn = document.getElementById("teachersNext");
+
+function slideBy(direction) {
+  const card = teachersSlider.querySelector(".teacher-card");
+  const step = card ? (card.getBoundingClientRect().width + 14) : 340;
+  teachersSlider.scrollBy({ left: direction * step, behavior: "smooth" });
+}
+
+prevBtn.addEventListener("click", () => slideBy(-1));
+nextBtn.addEventListener("click", () => slideBy(1));
+
+// ================== СЧЁТЧИКИ (статистика) ==================
+const counters = document.querySelectorAll(".stat-number");
+let countersStarted = false;
+
+function animateCount(el, to) {
+  const dur = 900;
+  const start = performance.now();
+  const from = 0;
+
+  function tick(now) {
+    const t = Math.min(1, (now - start) / dur);
+    const val = Math.round(from + (to - from) * (1 - Math.pow(1 - t, 3)));
+    el.textContent = val + (to === 92 || to === 98 ? "%" : "");
+    if (t < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const statsSection = document.getElementById("stats");
+const statsObs = new IntersectionObserver((entries) => {
+  entries.forEach(ent => {
+    if (!ent.isIntersecting || countersStarted) return;
+    countersStarted = true;
+
+    counters.forEach(el => {
+      const to = Number(el.dataset.count || "0");
+      animateCount(el, to);
+    });
+
+    // Прогресс-бары
+    document.querySelectorAll(".bar").forEach(b => b.classList.add("ready"));
+  });
+}, { threshold: 0.25 });
+
+if (statsSection) statsObs.observe(statsSection);
+
+// ================== ГАЛЕРЕЯ + МОДАЛКА ==================
+const galleryData = [
+  { url: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80", cap: "Проектная работа" },
+  { url: "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?auto=format&fit=crop&w=1200&q=80", cap: "Урок в классе" },
+  { url: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80", cap: "Командная работа" },
+  { url: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=80", cap: "Олимпиадная подготовка" },
+  { url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80", cap: "Библиотека" },
+  { url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80", cap: "Выпускной" },
+  { url: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80", cap: "Спортивный день" },
+  { url: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=80", cap: "Экскурсия" }
+];
+
+const galleryGrid = document.getElementById("galleryGrid");
+const imgModal = document.getElementById("imgModal");
+const modalImg = document.getElementById("modalImg");
+
+function openModal(src) {
+  modalImg.src = src;
+  imgModal.classList.add("show");
+  imgModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  imgModal.classList.remove("show");
+  imgModal.setAttribute("aria-hidden", "true");
+  modalImg.src = "";
+  document.body.style.overflow = "";
+}
+
+function renderGallery() {
+  if (!galleryGrid) return;
+  galleryGrid.innerHTML = "";
+  galleryData.forEach((g, idx) => {
+    const item = document.createElement("div");
+    item.className = "gallery-item";
+    item.innerHTML = `
+      <img src="${g.url}" alt="${g.cap}" loading="lazy" />
+      <div class="cap">${g.cap}</div>
+    `;
+    item.addEventListener("click", () => openModal(g.url));
+    galleryGrid.appendChild(item);
+  });
+}
+renderGallery();
+
+imgModal?.addEventListener("click", (e) => {
+  if (e.target && e.target.dataset && e.target.dataset.close) closeModal();
+});
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && imgModal.classList.contains("show")) closeModal();
+});
+
+// ================== ФОРМА (демо) ==================
+const contactForm = document.getElementById("contactForm");
+const formHint = document.getElementById("formHint");
+
+contactForm?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const fd = new FormData(contactForm);
+  const name = (fd.get("name") || "").toString().trim();
+  formHint.textContent = `Спасибо, ${name || "друг"}! Заявка отправлена (демо).`;
+  contactForm.reset();
+});
