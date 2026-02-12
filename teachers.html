@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Учителя — Школа №1000</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="pageFade" class="page-fade"></div>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="logo" href="index.html"><i class="ti ti-school"></i><span>Школа №1000</span></a>
+        <nav class="menu">
+          <a href="index.html"><i class="ti ti-home"></i>Главная</a>
+          <a href="#teachersGrid"><i class="ti ti-users-group"></i>Все учителя</a>
+          <a href="contacts.html"><i class="ti ti-message"></i>Запись</a>
+        </nav>
+        <button id="themeToggle" class="theme-btn"><i class="ti ti-moon-stars"></i><span>Тёмная</span></button>
+      </div>
+    </header>
+
+    <main class="container section">
+      <h1><i class="ti ti-users"></i>Педагогический состав</h1>
+      <p class="muted">Большой список учителей с предметами, стажем и возможностью записаться на консультацию.</p>
+      <div id="teachersGrid" class="grid three"></div>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-inner"><p>© 2026 Школа №1000</p></div></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
