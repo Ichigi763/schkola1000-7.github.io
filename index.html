@@ -1,486 +1,575 @@
-<!doctype html>
-<html lang="ru" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Школа «Лицей Будущего»</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-
-  <body>
-    <!-- Top progress -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <header class="hero" id="top">
-      <nav class="container nav">
-        <div class="logo-wrap">
-          <i class="ti ti-school logo-icon"></i>
-          <span class="logo-text">Лицей Будущего</span>
-        </div>
-
-        <div class="nav-links">
-          <a href="#schedule">Расписание</a>
-          <a href="#teachers">Учителя</a>
-          <a href="#stats">Статистика</a>
-          <a href="#alumni">Выпускники</a>
-          <a href="#clubs">Кружки</a>
-          <a href="#gallery">Галерея</a>
-          <a href="#contacts">Контакты</a>
-          <a href="#faq">FAQ</a>
-        </div>
-
-        <button id="themeToggle" class="theme-toggle" aria-label="Сменить тему">
-          <i class="ti ti-sun-high"></i>
-          <span>Светлая тема</span>
-        </button>
-      </nav>
-
-      <div class="container hero-content">
-        <div class="reveal">
-          <p class="badge"><i class="ti ti-stars"></i> Современная частная школа</p>
-          <h1>Качественное образование, дружелюбная атмосфера и развитие талантов</h1>
-          <p class="lead">
-            Мы объединяем сильных учителей, удобное расписание и современные подходы к обучению,
-            чтобы каждый ученик раскрывал свой потенциал.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#schedule" class="primary-btn">Посмотреть расписание</a>
-            <a href="#contacts" class="ghost-btn">Записаться</a>
-          </div>
-
-          <div class="mini-stats">
-            <div class="mini-stat">
-              <b>850+</b>
-              <span>учеников</span>
-            </div>
-            <div class="mini-stat">
-              <b>65</b>
-              <span>учителей</span>
-            </div>
-            <div class="mini-stat">
-              <b>30+</b>
-              <span>кружков</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-media reveal">
-          <img
-            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
-            alt="Ученики в школе"
-            class="hero-image"
-            loading="lazy"
-          />
-          <div class="hero-float card">
-            <div class="hero-float-row">
-              <i class="ti ti-award"></i>
-              <div>
-                <b>92%</b>
-                <span>средний результат</span>
-              </div>
-            </div>
-            <div class="hero-float-row">
-              <i class="ti ti-users"></i>
-              <div>
-                <b>1:12</b>
-                <span>учитель:ученики</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <main>
-      <!-- Расписание -->
-      <section class="section container reveal" id="schedule">
-        <div class="section-head">
-          <h2><i class="ti ti-calendar-event"></i> Расписание на сегодня</h2>
-          <p class="sub">Пример. Можно заменить на своё (таблица/классы/дни).</p>
-        </div>
-
-        <div class="schedule-grid">
-          <article class="card schedule-card">
-            <h3>5-А класс</h3>
-            <ul>
-              <li><span>08:30</span> Математика</li>
-              <li><span>09:25</span> Русский язык</li>
-              <li><span>10:20</span> Английский</li>
-              <li><span>11:30</span> Окружающий мир</li>
-            </ul>
-          </article>
-
-          <article class="card schedule-card">
-            <h3>8-Б класс</h3>
-            <ul>
-              <li><span>08:30</span> Геометрия</li>
-              <li><span>09:25</span> История</li>
-              <li><span>10:20</span> Физика</li>
-              <li><span>11:30</span> Информатика</li>
-            </ul>
-          </article>
-
-          <article class="card schedule-card">
-            <h3>11-А класс</h3>
-            <ul>
-              <li><span>08:30</span> Литература</li>
-              <li><span>09:25</span> Алгебра</li>
-              <li><span>10:20</span> Химия</li>
-              <li><span>11:30</span> Подготовка к ЕГЭ</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <!-- Учителя: Слайдер (плавное перелистывание) -->
-      <section class="section container reveal" id="teachers">
-        <div class="section-head row-between">
-          <div>
-            <h2><i class="ti ti-users"></i> Наши учителя</h2>
-            <p class="sub">Листай плавно кнопками или свайпом (на телефоне).</p>
-          </div>
-
-          <div class="slider-controls">
-            <button class="icon-btn" id="teachersPrev" aria-label="Назад">
-              <i class="ti ti-chevron-left"></i>
-            </button>
-            <button class="icon-btn" id="teachersNext" aria-label="Вперёд">
-              <i class="ti ti-chevron-right"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="slider" id="teachersSlider" aria-label="Слайдер учителей">
-          <!-- Карточки учителей добавляются через JS -->
-        </div>
-      </section>
-
-      <!-- Статистика / проценты -->
-      <section class="section container reveal" id="stats">
-        <div class="section-head">
-          <h2><i class="ti ti-chart-bar"></i> Показатели и результаты</h2>
-          <p class="sub">Счётчики анимируются, когда секция попадает на экран.</p>
-        </div>
-
-        <div class="stats-grid">
-          <article class="card stat-card">
-            <div class="stat-top">
-              <i class="ti ti-trending-up"></i>
-              <span>Успеваемость</span>
-            </div>
-            <div class="stat-number" data-count="92">0</div>
-            <p class="muted">Средний процент успеваемости по школе</p>
-          </article>
-
-          <article class="card stat-card">
-            <div class="stat-top">
-              <i class="ti ti-medal"></i>
-              <span>Олимпиады</span>
-            </div>
-            <div class="stat-number" data-count="147">0</div>
-            <p class="muted">Призёров и победителей за учебный год</p>
-          </article>
-
-          <article class="card stat-card">
-            <div class="stat-top">
-              <i class="ti ti-school"></i>
-              <span>Поступление</span>
-            </div>
-            <div class="stat-number" data-count="98">0</div>
-            <p class="muted">Поступивших выпускников в вузы (в %)</p>
-          </article>
-        </div>
-
-        <div class="progress-grid">
-          <article class="card progress-card">
-            <div class="progress-head">
-              <b>ЕГЭ (средний)</b>
-              <span class="pill">84/100</span>
-            </div>
-            <div class="progress">
-              <div class="bar" style="--v: 84"></div>
-            </div>
-            <p class="muted">Результаты по профильным предметам</p>
-          </article>
-
-          <article class="card progress-card">
-            <div class="progress-head">
-              <b>Английский</b>
-              <span class="pill">76%</span>
-            </div>
-            <div class="progress">
-              <div class="bar" style="--v: 76"></div>
-            </div>
-            <p class="muted">Процент учеников уровня A2+ и выше</p>
-          </article>
-
-          <article class="card progress-card">
-            <div class="progress-head">
-              <b>IT-навыки</b>
-              <span class="pill">69%</span>
-            </div>
-            <div class="progress">
-              <div class="bar" style="--v: 69"></div>
-            </div>
-            <p class="muted">Участие в проектах/хакатонах</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- Выпускники -->
-      <section class="section container reveal" id="alumni">
-        <div class="section-head">
-          <h2><i class="ti ti-graduationcap"></i> Выпускники</h2>
-          <p class="sub">Истории успеха + логотипы вузов (можно заменить).</p>
-        </div>
-
-        <div class="alumni-grid">
-          <article class="card alumni-card">
-            <div class="alumni-top">
-              <img
-                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=80"
-                alt="Выпускница"
-                loading="lazy"
-              />
-              <div>
-                <b>Айгерим Н.</b>
-                <span class="muted">Выпуск 2024 • Computer Science</span>
-              </div>
-            </div>
-            <p>
-              «Подготовка и проекты помогли мне собрать портфолио. Сейчас учусь в университете и
-              работаю над стартапом».
-            </p>
-            <div class="tags">
-              <span class="tag"><i class="ti ti-code"></i> IT</span>
-              <span class="tag"><i class="ti ti-device-laptop"></i> Проекты</span>
-            </div>
-          </article>
-
-          <article class="card alumni-card">
-            <div class="alumni-top">
-              <img
-                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80"
-                alt="Выпускник"
-                loading="lazy"
-              />
-              <div>
-                <b>Даниал К.</b>
-                <span class="muted">Выпуск 2023 • Инженерия</span>
-              </div>
-            </div>
-            <p>
-              «Сильная математика и физика — наш фундамент. Я поступил на инженерный факультет и
-              участвую в олимпиадах».
-            </p>
-            <div class="tags">
-              <span class="tag"><i class="ti ti-calculator"></i> STEM</span>
-              <span class="tag"><i class="ti ti-trophy"></i> Олимпиады</span>
-            </div>
-          </article>
-
-          <article class="card alumni-card">
-            <div class="alumni-top">
-              <img
-                src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=500&q=80"
-                alt="Выпускница"
-                loading="lazy"
-              />
-              <div>
-                <b>Мария С.</b>
-                <span class="muted">Выпуск 2022 • Международные отношения</span>
-              </div>
-            </div>
-            <p>
-              «Языковые клубы и дебаты дали уверенность. Сейчас учусь и участвую в международных
-              конференциях».
-            </p>
-            <div class="tags">
-              <span class="tag"><i class="ti ti-language"></i> Языки</span>
-              <span class="tag"><i class="ti ti-microphone"></i> Дебаты</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Кружки -->
-      <section class="section container reveal" id="clubs">
-        <div class="section-head">
-          <h2><i class="ti ti-puzzle"></i> Кружки и секции</h2>
-          <p class="sub">Больше возможностей для развития: спорт, IT, творчество.</p>
-        </div>
-
-        <div class="feature-grid">
-          <article class="card feature-card">
-            <i class="ti ti-robot"></i>
-            <h3>Робототехника</h3>
-            <p>Arduino, LEGO, проекты для соревнований и выставок.</p>
-          </article>
-
-          <article class="card feature-card">
-            <i class="ti ti-code"></i>
-            <h3>Веб-разработка</h3>
-            <p>HTML/CSS/JS, создание сайтов и портфолио.</p>
-          </article>
-
-          <article class="card feature-card">
-            <i class="ti ti-ball-basketball"></i>
-            <h3>Баскетбол</h3>
-            <p>Тренировки 3 раза в неделю, турниры и сборы.</p>
-          </article>
-
-          <article class="card feature-card">
-            <i class="ti ti-music"></i>
-            <h3>Музыка</h3>
-            <p>Вокал, ансамбль, подготовка к концертам.</p>
-          </article>
-
-          <article class="card feature-card">
-            <i class="ti ti-palette"></i>
-            <h3>Арт-студия</h3>
-            <p>Рисунок, дизайн, выставки и конкурсы.</p>
-          </article>
-
-          <article class="card feature-card">
-            <i class="ti ti-chess"></i>
-            <h3>Шахматы</h3>
-            <p>Тактика, стратегия, турниры между классами.</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- Галерея -->
-      <section class="section container reveal" id="gallery">
-        <div class="section-head">
-          <h2><i class="ti ti-photo"></i> Галерея</h2>
-          <p class="sub">Нажми на фото — откроется крупно.</p>
-        </div>
-
-        <div class="gallery-grid" id="galleryGrid">
-          <!-- Заполняется через JS -->
-        </div>
-      </section>
-
-      <!-- Контакты -->
-      <section class="section container reveal" id="contacts">
-        <div class="section-head">
-          <h2><i class="ti ti-phone"></i> Контакты</h2>
-          <p class="sub">Напиши нам — ответим в течение дня.</p>
-        </div>
-
-        <div class="contacts-grid">
-          <article class="card contact-card">
-            <h3>Адрес</h3>
-            <p class="muted"><i class="ti ti-map-pin"></i> г. Алматы, ул. Знаний, 12</p>
-            <p class="muted"><i class="ti ti-clock"></i> Пн–Пт 08:00–18:00</p>
-            <p class="muted"><i class="ti ti-phone"></i> +7 (777) 000-00-00</p>
-            <p class="muted"><i class="ti ti-mail"></i> info@licei-bud.kz</p>
-            <div class="row">
-              <a class="primary-btn small" href="mailto:info@licei-bud.kz">Написать</a>
-              <a class="ghost-btn small" href="#top">Наверх</a>
-            </div>
-          </article>
-
-          <article class="card contact-card">
-            <h3>Оставить заявку</h3>
-            <form id="contactForm" class="form">
-              <label>
-                Имя
-                <input type="text" name="name" placeholder="Ваше имя" required />
-              </label>
-              <label>
-                Телефон
-                <input type="tel" name="phone" placeholder="+7 ..." required />
-              </label>
-              <label>
-                Сообщение
-                <textarea name="message" rows="4" placeholder="Например: хочу записаться в 5 класс" required></textarea>
-              </label>
-              <button type="submit" class="primary-btn">Отправить</button>
-              <p class="muted tiny" id="formHint">
-                Форма демонстрационная (без сервера). Показывает уведомление.
-              </p>
-            </form>
-          </article>
-
-          <article class="card contact-card map">
-            <h3>Карта</h3>
-            <div class="map-box">
-              <div class="map-placeholder">
-                📍 Вставь сюда карту (iframe Google/Яндекс)
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- FAQ -->
-      <section class="section container reveal" id="faq">
-        <div class="section-head">
-          <h2><i class="ti ti-help-circle"></i> Вопросы и ответы</h2>
-          <p class="sub">Можно открыть/закрыть вопрос одним нажатием.</p>
-        </div>
-
-        <div class="faq">
-          <details class="card">
-            <summary>Как записаться в школу?</summary>
-            <div class="faq-body">
-              Заполните заявку в разделе «Контакты» или позвоните в приёмную. Мы пригласим на собеседование.
-            </div>
-          </details>
-
-          <details class="card">
-            <summary>Есть ли школьный автобус?</summary>
-            <div class="faq-body">
-              Да, есть несколько маршрутов по городу. Расписание и стоимость уточняются в приёмной.
-            </div>
-          </details>
-
-          <details class="card">
-            <summary>Какие кружки доступны?</summary>
-            <div class="faq-body">
-              IT, робототехника, спорт, музыка, арт, шахматы и многое другое. Список обновляется каждый семестр.
-            </div>
-          </details>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container footer-content">
-        <p>© <span id="year"></span> Лицей Будущего</p>
-        <p><i class="ti ti-map-pin"></i> г. Алматы, ул. Знаний, 12</p>
-      </div>
-    </footer>
-
-    <!-- Кнопка наверх -->
-    <button class="to-top" id="toTop" aria-label="Наверх">
-      <i class="ti ti-arrow-up"></i>
-    </button>
-
-    <!-- Модалка для фото -->
-    <div class="modal" id="imgModal" aria-hidden="true">
-      <div class="modal-backdrop" data-close="1"></div>
-      <div class="modal-content" role="dialog" aria-modal="true" aria-label="Просмотр фото">
-        <button class="icon-btn modal-close" data-close="1" aria-label="Закрыть">
-          <i class="ti ti-x"></i>
-        </button>
-        <img id="modalImg" alt="Фото" />
-      </div>
-    </div>
-
-    <script src="script.js"></script>
-  </body>
-</html>
+diff --git a/index.html b/index.html
+index 6d228007c4e87ea72d0cdd7268b4c4638a767027..148972571143ad83ca24885fa0ddb96532e50c0d 100644
+--- a/index.html
++++ b/index.html
+@@ -1,486 +1,84 @@
+-<!doctype html>
+-<html lang="ru" data-theme="light">
+-  <head>
+-    <meta charset="UTF-8" />
+-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+-    <title>Школа «Лицей Будущего»</title>
+-
+-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+-    <link
+-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+-      rel="stylesheet"
+-    />
+-    <link
+-      rel="stylesheet"
+-      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+-    />
+-    <link rel="stylesheet" href="styles.css" />
+-  </head>
+-
+-  <body>
+-    <!-- Top progress -->
+-    <div class="scroll-progress" id="scrollProgress"></div>
+-
+-    <header class="hero" id="top">
+-      <nav class="container nav">
+-        <div class="logo-wrap">
+-          <i class="ti ti-school logo-icon"></i>
+-          <span class="logo-text">Лицей Будущего</span>
+-        </div>
+-
+-        <div class="nav-links">
+-          <a href="#schedule">Расписание</a>
+-          <a href="#teachers">Учителя</a>
+-          <a href="#stats">Статистика</a>
+-          <a href="#alumni">Выпускники</a>
+-          <a href="#clubs">Кружки</a>
+-          <a href="#gallery">Галерея</a>
+-          <a href="#contacts">Контакты</a>
+-          <a href="#faq">FAQ</a>
+-        </div>
+-
+-        <button id="themeToggle" class="theme-toggle" aria-label="Сменить тему">
+-          <i class="ti ti-sun-high"></i>
+-          <span>Светлая тема</span>
+-        </button>
+-      </nav>
+-
+-      <div class="container hero-content">
+-        <div class="reveal">
+-          <p class="badge"><i class="ti ti-stars"></i> Современная частная школа</p>
+-          <h1>Качественное образование, дружелюбная атмосфера и развитие талантов</h1>
+-          <p class="lead">
+-            Мы объединяем сильных учителей, удобное расписание и современные подходы к обучению,
+-            чтобы каждый ученик раскрывал свой потенциал.
+-          </p>
+-
+-          <div class="hero-actions">
+-            <a href="#schedule" class="primary-btn">Посмотреть расписание</a>
+-            <a href="#contacts" class="ghost-btn">Записаться</a>
+-          </div>
+-
+-          <div class="mini-stats">
+-            <div class="mini-stat">
+-              <b>850+</b>
+-              <span>учеников</span>
+-            </div>
+-            <div class="mini-stat">
+-              <b>65</b>
+-              <span>учителей</span>
+-            </div>
+-            <div class="mini-stat">
+-              <b>30+</b>
+-              <span>кружков</span>
+-            </div>
+-          </div>
+-        </div>
+-
+-        <div class="hero-media reveal">
+-          <img
+-            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
+-            alt="Ученики в школе"
+-            class="hero-image"
+-            loading="lazy"
+-          />
+-          <div class="hero-float card">
+-            <div class="hero-float-row">
+-              <i class="ti ti-award"></i>
+-              <div>
+-                <b>92%</b>
+-                <span>средний результат</span>
+-              </div>
+-            </div>
+-            <div class="hero-float-row">
+-              <i class="ti ti-users"></i>
+-              <div>
+-                <b>1:12</b>
+-                <span>учитель:ученики</span>
+-              </div>
+-            </div>
+-          </div>
+-        </div>
+-      </div>
+-    </header>
+-
+-    <main>
+-      <!-- Расписание -->
+-      <section class="section container reveal" id="schedule">
+-        <div class="section-head">
+-          <h2><i class="ti ti-calendar-event"></i> Расписание на сегодня</h2>
+-          <p class="sub">Пример. Можно заменить на своё (таблица/классы/дни).</p>
+-        </div>
+-
+-        <div class="schedule-grid">
+-          <article class="card schedule-card">
+-            <h3>5-А класс</h3>
+-            <ul>
+-              <li><span>08:30</span> Математика</li>
+-              <li><span>09:25</span> Русский язык</li>
+-              <li><span>10:20</span> Английский</li>
+-              <li><span>11:30</span> Окружающий мир</li>
+-            </ul>
+-          </article>
+-
+-          <article class="card schedule-card">
+-            <h3>8-Б класс</h3>
+-            <ul>
+-              <li><span>08:30</span> Геометрия</li>
+-              <li><span>09:25</span> История</li>
+-              <li><span>10:20</span> Физика</li>
+-              <li><span>11:30</span> Информатика</li>
+-            </ul>
+-          </article>
+-
+-          <article class="card schedule-card">
+-            <h3>11-А класс</h3>
+-            <ul>
+-              <li><span>08:30</span> Литература</li>
+-              <li><span>09:25</span> Алгебра</li>
+-              <li><span>10:20</span> Химия</li>
+-              <li><span>11:30</span> Подготовка к ЕГЭ</li>
+-            </ul>
+-          </article>
+-        </div>
+-      </section>
+-
+-      <!-- Учителя: Слайдер (плавное перелистывание) -->
+-      <section class="section container reveal" id="teachers">
+-        <div class="section-head row-between">
+-          <div>
+-            <h2><i class="ti ti-users"></i> Наши учителя</h2>
+-            <p class="sub">Листай плавно кнопками или свайпом (на телефоне).</p>
+-          </div>
+-
+-          <div class="slider-controls">
+-            <button class="icon-btn" id="teachersPrev" aria-label="Назад">
+-              <i class="ti ti-chevron-left"></i>
+-            </button>
+-            <button class="icon-btn" id="teachersNext" aria-label="Вперёд">
+-              <i class="ti ti-chevron-right"></i>
+-            </button>
+-          </div>
+-        </div>
+-
+-        <div class="slider" id="teachersSlider" aria-label="Слайдер учителей">
+-          <!-- Карточки учителей добавляются через JS -->
+-        </div>
+-      </section>
+-
+-      <!-- Статистика / проценты -->
+-      <section class="section container reveal" id="stats">
+-        <div class="section-head">
+-          <h2><i class="ti ti-chart-bar"></i> Показатели и результаты</h2>
+-          <p class="sub">Счётчики анимируются, когда секция попадает на экран.</p>
+-        </div>
+-
+-        <div class="stats-grid">
+-          <article class="card stat-card">
+-            <div class="stat-top">
+-              <i class="ti ti-trending-up"></i>
+-              <span>Успеваемость</span>
+-            </div>
+-            <div class="stat-number" data-count="92">0</div>
+-            <p class="muted">Средний процент успеваемости по школе</p>
+-          </article>
+-
+-          <article class="card stat-card">
+-            <div class="stat-top">
+-              <i class="ti ti-medal"></i>
+-              <span>Олимпиады</span>
+-            </div>
+-            <div class="stat-number" data-count="147">0</div>
+-            <p class="muted">Призёров и победителей за учебный год</p>
+-          </article>
+-
+-          <article class="card stat-card">
+-            <div class="stat-top">
+-              <i class="ti ti-school"></i>
+-              <span>Поступление</span>
+-            </div>
+-            <div class="stat-number" data-count="98">0</div>
+-            <p class="muted">Поступивших выпускников в вузы (в %)</p>
+-          </article>
+-        </div>
+-
+-        <div class="progress-grid">
+-          <article class="card progress-card">
+-            <div class="progress-head">
+-              <b>ЕГЭ (средний)</b>
+-              <span class="pill">84/100</span>
+-            </div>
+-            <div class="progress">
+-              <div class="bar" style="--v: 84"></div>
+-            </div>
+-            <p class="muted">Результаты по профильным предметам</p>
+-          </article>
+-
+-          <article class="card progress-card">
+-            <div class="progress-head">
+-              <b>Английский</b>
+-              <span class="pill">76%</span>
+-            </div>
+-            <div class="progress">
+-              <div class="bar" style="--v: 76"></div>
+-            </div>
+-            <p class="muted">Процент учеников уровня A2+ и выше</p>
+-          </article>
+-
+-          <article class="card progress-card">
+-            <div class="progress-head">
+-              <b>IT-навыки</b>
+-              <span class="pill">69%</span>
+-            </div>
+-            <div class="progress">
+-              <div class="bar" style="--v: 69"></div>
+-            </div>
+-            <p class="muted">Участие в проектах/хакатонах</p>
+-          </article>
+-        </div>
+-      </section>
+-
+-      <!-- Выпускники -->
+-      <section class="section container reveal" id="alumni">
+-        <div class="section-head">
+-          <h2><i class="ti ti-graduationcap"></i> Выпускники</h2>
+-          <p class="sub">Истории успеха + логотипы вузов (можно заменить).</p>
+-        </div>
+-
+-        <div class="alumni-grid">
+-          <article class="card alumni-card">
+-            <div class="alumni-top">
+-              <img
+-                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=80"
+-                alt="Выпускница"
+-                loading="lazy"
+-              />
+-              <div>
+-                <b>Айгерим Н.</b>
+-                <span class="muted">Выпуск 2024 • Computer Science</span>
+-              </div>
+-            </div>
+-            <p>
+-              «Подготовка и проекты помогли мне собрать портфолио. Сейчас учусь в университете и
+-              работаю над стартапом».
+-            </p>
+-            <div class="tags">
+-              <span class="tag"><i class="ti ti-code"></i> IT</span>
+-              <span class="tag"><i class="ti ti-device-laptop"></i> Проекты</span>
+-            </div>
+-          </article>
+-
+-          <article class="card alumni-card">
+-            <div class="alumni-top">
+-              <img
+-                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80"
+-                alt="Выпускник"
+-                loading="lazy"
+-              />
+-              <div>
+-                <b>Даниал К.</b>
+-                <span class="muted">Выпуск 2023 • Инженерия</span>
+-              </div>
+-            </div>
+-            <p>
+-              «Сильная математика и физика — наш фундамент. Я поступил на инженерный факультет и
+-              участвую в олимпиадах».
+-            </p>
+-            <div class="tags">
+-              <span class="tag"><i class="ti ti-calculator"></i> STEM</span>
+-              <span class="tag"><i class="ti ti-trophy"></i> Олимпиады</span>
+-            </div>
+-          </article>
+-
+-          <article class="card alumni-card">
+-            <div class="alumni-top">
+-              <img
+-                src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=500&q=80"
+-                alt="Выпускница"
+-                loading="lazy"
+-              />
+-              <div>
+-                <b>Мария С.</b>
+-                <span class="muted">Выпуск 2022 • Международные отношения</span>
+-              </div>
+-            </div>
+-            <p>
+-              «Языковые клубы и дебаты дали уверенность. Сейчас учусь и участвую в международных
+-              конференциях».
+-            </p>
+-            <div class="tags">
+-              <span class="tag"><i class="ti ti-language"></i> Языки</span>
+-              <span class="tag"><i class="ti ti-microphone"></i> Дебаты</span>
+-            </div>
+-          </article>
+-        </div>
+-      </section>
+-
+-      <!-- Кружки -->
+-      <section class="section container reveal" id="clubs">
+-        <div class="section-head">
+-          <h2><i class="ti ti-puzzle"></i> Кружки и секции</h2>
+-          <p class="sub">Больше возможностей для развития: спорт, IT, творчество.</p>
+-        </div>
+-
+-        <div class="feature-grid">
+-          <article class="card feature-card">
+-            <i class="ti ti-robot"></i>
+-            <h3>Робототехника</h3>
+-            <p>Arduino, LEGO, проекты для соревнований и выставок.</p>
+-          </article>
+-
+-          <article class="card feature-card">
+-            <i class="ti ti-code"></i>
+-            <h3>Веб-разработка</h3>
+-            <p>HTML/CSS/JS, создание сайтов и портфолио.</p>
+-          </article>
+-
+-          <article class="card feature-card">
+-            <i class="ti ti-ball-basketball"></i>
+-            <h3>Баскетбол</h3>
+-            <p>Тренировки 3 раза в неделю, турниры и сборы.</p>
+-          </article>
+-
+-          <article class="card feature-card">
+-            <i class="ti ti-music"></i>
+-            <h3>Музыка</h3>
+-            <p>Вокал, ансамбль, подготовка к концертам.</p>
+-          </article>
+-
+-          <article class="card feature-card">
+-            <i class="ti ti-palette"></i>
+-            <h3>Арт-студия</h3>
+-            <p>Рисунок, дизайн, выставки и конкурсы.</p>
+-          </article>
+-
+-          <article class="card feature-card">
+-            <i class="ti ti-chess"></i>
+-            <h3>Шахматы</h3>
+-            <p>Тактика, стратегия, турниры между классами.</p>
+-          </article>
+-        </div>
+-      </section>
+-
+-      <!-- Галерея -->
+-      <section class="section container reveal" id="gallery">
+-        <div class="section-head">
+-          <h2><i class="ti ti-photo"></i> Галерея</h2>
+-          <p class="sub">Нажми на фото — откроется крупно.</p>
+-        </div>
+-
+-        <div class="gallery-grid" id="galleryGrid">
+-          <!-- Заполняется через JS -->
+-        </div>
+-      </section>
+-
+-      <!-- Контакты -->
+-      <section class="section container reveal" id="contacts">
+-        <div class="section-head">
+-          <h2><i class="ti ti-phone"></i> Контакты</h2>
+-          <p class="sub">Напиши нам — ответим в течение дня.</p>
+-        </div>
+-
+-        <div class="contacts-grid">
+-          <article class="card contact-card">
+-            <h3>Адрес</h3>
+-            <p class="muted"><i class="ti ti-map-pin"></i> г. Алматы, ул. Знаний, 12</p>
+-            <p class="muted"><i class="ti ti-clock"></i> Пн–Пт 08:00–18:00</p>
+-            <p class="muted"><i class="ti ti-phone"></i> +7 (777) 000-00-00</p>
+-            <p class="muted"><i class="ti ti-mail"></i> info@licei-bud.kz</p>
+-            <div class="row">
+-              <a class="primary-btn small" href="mailto:info@licei-bud.kz">Написать</a>
+-              <a class="ghost-btn small" href="#top">Наверх</a>
+-            </div>
+-          </article>
+-
+-          <article class="card contact-card">
+-            <h3>Оставить заявку</h3>
+-            <form id="contactForm" class="form">
+-              <label>
+-                Имя
+-                <input type="text" name="name" placeholder="Ваше имя" required />
+-              </label>
+-              <label>
+-                Телефон
+-                <input type="tel" name="phone" placeholder="+7 ..." required />
+-              </label>
+-              <label>
+-                Сообщение
+-                <textarea name="message" rows="4" placeholder="Например: хочу записаться в 5 класс" required></textarea>
+-              </label>
+-              <button type="submit" class="primary-btn">Отправить</button>
+-              <p class="muted tiny" id="formHint">
+-                Форма демонстрационная (без сервера). Показывает уведомление.
+-              </p>
+-            </form>
+-          </article>
+-
+-          <article class="card contact-card map">
+-            <h3>Карта</h3>
+-            <div class="map-box">
+-              <div class="map-placeholder">
+-                📍 Вставь сюда карту (iframe Google/Яндекс)
+-              </div>
+-            </div>
+-          </article>
+-        </div>
+-      </section>
+-
+-      <!-- FAQ -->
+-      <section class="section container reveal" id="faq">
+-        <div class="section-head">
+-          <h2><i class="ti ti-help-circle"></i> Вопросы и ответы</h2>
+-          <p class="sub">Можно открыть/закрыть вопрос одним нажатием.</p>
+-        </div>
+-
+-        <div class="faq">
+-          <details class="card">
+-            <summary>Как записаться в школу?</summary>
+-            <div class="faq-body">
+-              Заполните заявку в разделе «Контакты» или позвоните в приёмную. Мы пригласим на собеседование.
+-            </div>
+-          </details>
+-
+-          <details class="card">
+-            <summary>Есть ли школьный автобус?</summary>
+-            <div class="faq-body">
+-              Да, есть несколько маршрутов по городу. Расписание и стоимость уточняются в приёмной.
+-            </div>
+-          </details>
+-
+-          <details class="card">
+-            <summary>Какие кружки доступны?</summary>
+-            <div class="faq-body">
+-              IT, робототехника, спорт, музыка, арт, шахматы и многое другое. Список обновляется каждый семестр.
+-            </div>
+-          </details>
+-        </div>
+-      </section>
+-    </main>
+-
+-    <footer class="footer">
+-      <div class="container footer-content">
+-        <p>© <span id="year"></span> Лицей Будущего</p>
+-        <p><i class="ti ti-map-pin"></i> г. Алматы, ул. Знаний, 12</p>
+-      </div>
+-    </footer>
+-
+-    <!-- Кнопка наверх -->
+-    <button class="to-top" id="toTop" aria-label="Наверх">
+-      <i class="ti ti-arrow-up"></i>
+-    </button>
+-
+-    <!-- Модалка для фото -->
+-    <div class="modal" id="imgModal" aria-hidden="true">
+-      <div class="modal-backdrop" data-close="1"></div>
+-      <div class="modal-content" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+-        <button class="icon-btn modal-close" data-close="1" aria-label="Закрыть">
+-          <i class="ti ti-x"></i>
+-        </button>
+-        <img id="modalImg" alt="Фото" />
+-      </div>
+-    </div>
+-
+-    <script src="script.js"></script>
+-  </body>
+-</html>
++<!doctype html>
++<html lang="ru" data-theme="light">
++  <head>
++    <meta charset="UTF-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++    <title>Школа №1000 — Новый официальный сайт</title>
++    <link rel="preconnect" href="https://fonts.googleapis.com" />
++    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
++    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
++    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
++    <link rel="stylesheet" href="styles.css" />
++  </head>
++  <body>
++    <div id="pageFade" class="page-fade"></div>
++    <header class="site-header">
++      <div class="container nav">
++        <a class="logo" href="index.html"><i class="ti ti-school"></i><span>Школа №1000</span></a>
++        <nav class="menu">
++          <a href="#about"><i class="ti ti-info-circle"></i>О школе</a>
++          <a href="#advantages"><i class="ti ti-star"></i>Преимущества</a>
++          <a href="schedule.html"><i class="ti ti-calendar"></i>Расписание</a>
++          <a href="teachers.html"><i class="ti ti-users"></i>Учителя</a>
++          <a href="cafeteria.html"><i class="ti ti-chef-hat"></i>Столовая</a>
++          <a href="contacts.html"><i class="ti ti-phone"></i>Контакты</a>
++        </nav>
++        <button id="themeToggle" class="theme-btn"><i class="ti ti-moon-stars"></i><span>Тёмная</span></button>
++      </div>
++    </header>
++
++    <main>
++      <section class="hero container">
++        <div>
++          <p class="badge"><i class="ti ti-rocket"></i>Официальный сайт 2025/2026</p>
++          <h1>Современная школа с понятным расписанием, сильными учителями и красивым интерфейсом</h1>
++          <p class="lead">Мы полностью обновили структуру сайта: сделали удобные отдельные страницы, добавили плавные переходы, темную и светлую тему, иконки и больше информации о жизни школы.</p>
++          <div class="cta-row">
++            <a class="btn primary" href="schedule.html"><i class="ti ti-calendar-event"></i>Смотреть расписание 1–11</a>
++            <a class="btn" href="teachers.html"><i class="ti ti-user-search"></i>Каталог учителей</a>
++          </div>
++          <div class="stats">
++            <article><strong data-count="1460">0</strong><span>учеников</span></article>
++            <article><strong data-count="124">0</strong><span>учителя</span></article>
++            <article><strong data-count="97">0</strong><span>% поступления</span></article>
++          </div>
++        </div>
++        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1300&q=80" alt="Ученики на школьном мероприятии" class="hero-image" />
++      </section>
++
++      <section id="about" class="container section">
++        <h2><i class="ti ti-building-community"></i>О школе</h2>
++        <div class="grid three">
++          <article class="card"><h3><i class="ti ti-book"></i>Образование</h3><p>Профильные направления с 7 класса: IT, инженерия, гуманитарный и естественно-научный трек.</p></article>
++          <article class="card"><h3><i class="ti ti-shield-lock"></i>Безопасность</h3><p>Охрана, электронный пропуск, видеонаблюдение и сопровождение детей в течение учебного дня.</p></article>
++          <article class="card"><h3><i class="ti ti-trophy"></i>Достижения</h3><p>Победы в олимпиадах, научных конкурсах, спортивных соревнованиях и творческих фестивалях.</p></article>
++        </div>
++      </section>
++
++      <section id="advantages" class="container section">
++        <h2><i class="ti ti-heart-handshake"></i>Почему выбирают нас</h2>
++        <div class="grid two">
++          <article class="card with-image">
++            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1000&q=80" alt="Школьный урок" />
++            <h3>Сильный педагогический состав</h3>
++            <p>Каждый ученик получает внимание, индивидуальную траекторию обучения и помощь в подготовке к экзаменам.</p>
++          </article>
++          <article class="card with-image">
++            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" alt="Выпускники" />
++            <h3>Выпускники и результаты</h3>
++            <p>Ежегодно 95%+ выпускников поступают в вузы. У школы активное сообщество выпускников и наставников.</p>
++          </article>
++        </div>
++      </section>
++    </main>
++
++    <footer class="site-footer">
++      <div class="container footer-inner">
++        <p>© 2026 Школа №1000. Все права защищены.</p>
++        <a href="contacts.html"><i class="ti ti-mail"></i>Связаться с администрацией</a>
++      </div>
++    </footer>
++
++    <script src="script.js"></script>
++  </body>
++</html>
