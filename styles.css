@@ -1,278 +1,488 @@
-// ================== ТЕМА (светлая/тёмная) ==================
-const themeToggle = document.getElementById("themeToggle");
-const root = document.documentElement;
-
-function setTheme(theme) {
-  root.setAttribute("data-theme", theme);
-  const icon = themeToggle.querySelector("i");
-  const text = themeToggle.querySelector("span");
-
-  if (theme === "dark") {
-    icon.className = "ti ti-moon";
-    text.textContent = "Тёмная тема";
-  } else {
-    icon.className = "ti ti-sun-high";
-    text.textContent = "Светлая тема";
-  }
-  localStorage.setItem("theme", theme);
-}
-
-setTheme(localStorage.getItem("theme") || "light");
-
-themeToggle.addEventListener("click", () => {
-  const current = root.getAttribute("data-theme");
-  setTheme(current === "light" ? "dark" : "light");
-});
-
-// ================== ПЛАВНАЯ ПРОКРУТКА ПО ЯКОРЯМ ==================
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener("click", (e) => {
-    const id = a.getAttribute("href");
-    const el = document.querySelector(id);
-    if (!el) return;
-    e.preventDefault();
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-    history.pushState(null, "", id);
-  });
-});
-
-// ================== REVEAL (появление секций) ==================
-const revealEls = document.querySelectorAll(".reveal");
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach(ent => {
-    if (ent.isIntersecting) ent.target.classList.add("show");
-  });
-}, { threshold: 0.12 });
-
-revealEls.forEach(el => revealObs.observe(el));
-
-// ================== СКРОЛЛ-ПРОГРЕСС + КНОПКА "НАВЕРХ" ==================
-const scrollProgress = document.getElementById("scrollProgress");
-const toTop = document.getElementById("toTop");
-
-function onScroll() {
-  const h = document.documentElement;
-  const scrolled = h.scrollTop;
-  const max = h.scrollHeight - h.clientHeight;
-  const p = max > 0 ? (scrolled / max) * 100 : 0;
-  scrollProgress.style.width = `${p}%`;
-
-  if (scrolled > 500) toTop.classList.add("show");
-  else toTop.classList.remove("show");
-}
-window.addEventListener("scroll", onScroll);
-onScroll();
-
-toTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-// ================== ГОД В ФУТЕРЕ ==================
-document.getElementById("year").textContent = new Date().getFullYear();
-
-// ================== ДАННЫЕ УЧИТЕЛЕЙ (БОЛЬШЕ) ==================
-const teachers = [
-  {
-    name: "Ольга Викторовна",
-    subject: "Математика",
-    desc: "Победитель «Учитель года», 15 лет опыта подготовки к олимпиадам.",
-    photo: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80",
-    cabinet: "205",
-    email: "math@licei-bud.kz"
-  },
-  {
-    name: "Артём Игоревич",
-    subject: "Английский язык",
-    desc: "Разговорные клубы, подготовка к международным экзаменам, проекты на английском.",
-    photo: "https://images.unsplash.com/photo-1601412436009-d964bd02edbc?auto=format&fit=crop&w=1000&q=80",
-    cabinet: "210",
-    email: "eng@licei-bud.kz"
-  },
-  {
-    name: "Елена Сергеевна",
-    subject: "Информатика",
-    desc: "Python, веб-разработка и робототехника. Помогает собрать портфолио.",
-    photo: "https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&w=1000&q=80",
-    cabinet: "402",
-    email: "it@licei-bud.kz"
-  },
-  {
-    name: "Сергей Константинович",
-    subject: "Физика",
-    desc: "Лабораторные, эксперименты и подготовка к олимпиадам. Стаж 12 лет.",
-    photo: "https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=1000&q=80",
-    cabinet: "320",
-    email: "physics@licei-bud.kz"
-  },
-  {
-    name: "Наталья Николаевна",
-    subject: "Музыка",
-    desc: "Вокал, ансамбль и выступления. Готовит школьные концерты.",
-    photo: "https://images.unsplash.com/photo-1524503033411-fd26f86da3e0?auto=format&fit=crop&w=1000&q=80",
-    cabinet: "217",
-    email: "music@licei-bud.kz"
-  },
-  {
-    name: "Ирина Михайловна",
-    subject: "История",
-    desc: "Дебаты, анализ источников, подготовка к экзаменам и проектным работам.",
-    photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80",
-    cabinet: "301",
-    email: "history@licei-bud.kz"
-  },
-  {
-    name: "Данияр Рустемович",
-    subject: "Химия",
-    desc: "Практикумы, безопасные опыты, олимпиадная подготовка. Стаж 10 лет.",
-    photo: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1000&q=80",
-    cabinet: "312",
-    email: "chem@licei-bud.kz"
-  },
-  {
-    name: "Виктория Андреевна",
-    subject: "Биология",
-    desc: "Кружок «Юный биолог», проекты и экология. Много практики.",
-    photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1000&q=80",
-    cabinet: "318",
-    email: "bio@licei-bud.kz"
-  }
-];
-
-const teachersSlider = document.getElementById("teachersSlider");
-
-function renderTeachers() {
-  teachersSlider.innerHTML = "";
-  teachers.forEach(t => {
-    const card = document.createElement("article");
-    card.className = "card teacher-card";
-    card.innerHTML = `
-      <img src="${t.photo}" alt="${t.subject}" loading="lazy" />
-      <div class="pad">
-        <h3>${t.name}</h3>
-        <p class="subject">${t.subject}</p>
-        <p class="muted">${t.desc}</p>
-        <div class="teacher-meta">
-          <span class="pill"><i class="ti ti-door"></i> Каб. ${t.cabinet}</span>
-          <span class="pill"><i class="ti ti-mail"></i> ${t.email}</span>
-        </div>
-      </div>
-    `;
-    teachersSlider.appendChild(card);
-  });
-}
-renderTeachers();
-
-// Плавное "перелистывание" слайдера
-const prevBtn = document.getElementById("teachersPrev");
-const nextBtn = document.getElementById("teachersNext");
-
-function slideBy(direction) {
-  const card = teachersSlider.querySelector(".teacher-card");
-  const step = card ? (card.getBoundingClientRect().width + 14) : 340;
-  teachersSlider.scrollBy({ left: direction * step, behavior: "smooth" });
-}
-
-prevBtn.addEventListener("click", () => slideBy(-1));
-nextBtn.addEventListener("click", () => slideBy(1));
-
-// ================== СЧЁТЧИКИ (статистика) ==================
-const counters = document.querySelectorAll(".stat-number");
-let countersStarted = false;
-
-function animateCount(el, to) {
-  const dur = 900;
-  const start = performance.now();
-  const from = 0;
-
-  function tick(now) {
-    const t = Math.min(1, (now - start) / dur);
-    const val = Math.round(from + (to - from) * (1 - Math.pow(1 - t, 3)));
-    el.textContent = val + (to === 92 || to === 98 ? "%" : "");
-    if (t < 1) requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-}
-
-const statsSection = document.getElementById("stats");
-const statsObs = new IntersectionObserver((entries) => {
-  entries.forEach(ent => {
-    if (!ent.isIntersecting || countersStarted) return;
-    countersStarted = true;
-
-    counters.forEach(el => {
-      const to = Number(el.dataset.count || "0");
-      animateCount(el, to);
-    });
-
-    // Прогресс-бары
-    document.querySelectorAll(".bar").forEach(b => b.classList.add("ready"));
-  });
-}, { threshold: 0.25 });
-
-if (statsSection) statsObs.observe(statsSection);
-
-// ================== ГАЛЕРЕЯ + МОДАЛКА ==================
-const galleryData = [
-  { url: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80", cap: "Проектная работа" },
-  { url: "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?auto=format&fit=crop&w=1200&q=80", cap: "Урок в классе" },
-  { url: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80", cap: "Командная работа" },
-  { url: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=80", cap: "Олимпиадная подготовка" },
-  { url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80", cap: "Библиотека" },
-  { url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80", cap: "Выпускной" },
-  { url: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80", cap: "Спортивный день" },
-  { url: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=80", cap: "Экскурсия" }
-];
-
-const galleryGrid = document.getElementById("galleryGrid");
-const imgModal = document.getElementById("imgModal");
-const modalImg = document.getElementById("modalImg");
-
-function openModal(src) {
-  modalImg.src = src;
-  imgModal.classList.add("show");
-  imgModal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-}
-
-function closeModal() {
-  imgModal.classList.remove("show");
-  imgModal.setAttribute("aria-hidden", "true");
-  modalImg.src = "";
-  document.body.style.overflow = "";
-}
-
-function renderGallery() {
-  if (!galleryGrid) return;
-  galleryGrid.innerHTML = "";
-  galleryData.forEach((g, idx) => {
-    const item = document.createElement("div");
-    item.className = "gallery-item";
-    item.innerHTML = `
-      <img src="${g.url}" alt="${g.cap}" loading="lazy" />
-      <div class="cap">${g.cap}</div>
-    `;
-    item.addEventListener("click", () => openModal(g.url));
-    galleryGrid.appendChild(item);
-  });
-}
-renderGallery();
-
-imgModal?.addEventListener("click", (e) => {
-  if (e.target && e.target.dataset && e.target.dataset.close) closeModal();
-});
-
-window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && imgModal.classList.contains("show")) closeModal();
-});
-
-// ================== ФОРМА (демо) ==================
-const contactForm = document.getElementById("contactForm");
-const formHint = document.getElementById("formHint");
-
-contactForm?.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const fd = new FormData(contactForm);
-  const name = (fd.get("name") || "").toString().trim();
-  formHint.textContent = `Спасибо, ${name || "друг"}! Заявка отправлена (демо).`;
-  contactForm.reset();
-});
+diff --git a/styles.css b/styles.css
+index e70d01ffd30c028b0a88f292ce21d817ec7b898c..626248a2302f137fc25ee997b61e7d5607d5c024 100644
+--- a/styles.css
++++ b/styles.css
+@@ -1,278 +1,205 @@
+-// ================== ТЕМА (светлая/тёмная) ==================
+-const themeToggle = document.getElementById("themeToggle");
+-const root = document.documentElement;
+-
+-function setTheme(theme) {
+-  root.setAttribute("data-theme", theme);
+-  const icon = themeToggle.querySelector("i");
+-  const text = themeToggle.querySelector("span");
+-
+-  if (theme === "dark") {
+-    icon.className = "ti ti-moon";
+-    text.textContent = "Тёмная тема";
+-  } else {
+-    icon.className = "ti ti-sun-high";
+-    text.textContent = "Светлая тема";
+-  }
+-  localStorage.setItem("theme", theme);
+-}
+-
+-setTheme(localStorage.getItem("theme") || "light");
+-
+-themeToggle.addEventListener("click", () => {
+-  const current = root.getAttribute("data-theme");
+-  setTheme(current === "light" ? "dark" : "light");
+-});
+-
+-// ================== ПЛАВНАЯ ПРОКРУТКА ПО ЯКОРЯМ ==================
+-document.querySelectorAll('a[href^="#"]').forEach(a => {
+-  a.addEventListener("click", (e) => {
+-    const id = a.getAttribute("href");
+-    const el = document.querySelector(id);
+-    if (!el) return;
+-    e.preventDefault();
+-    el.scrollIntoView({ behavior: "smooth", block: "start" });
+-    history.pushState(null, "", id);
+-  });
+-});
+-
+-// ================== REVEAL (появление секций) ==================
+-const revealEls = document.querySelectorAll(".reveal");
+-const revealObs = new IntersectionObserver((entries) => {
+-  entries.forEach(ent => {
+-    if (ent.isIntersecting) ent.target.classList.add("show");
+-  });
+-}, { threshold: 0.12 });
+-
+-revealEls.forEach(el => revealObs.observe(el));
+-
+-// ================== СКРОЛЛ-ПРОГРЕСС + КНОПКА "НАВЕРХ" ==================
+-const scrollProgress = document.getElementById("scrollProgress");
+-const toTop = document.getElementById("toTop");
+-
+-function onScroll() {
+-  const h = document.documentElement;
+-  const scrolled = h.scrollTop;
+-  const max = h.scrollHeight - h.clientHeight;
+-  const p = max > 0 ? (scrolled / max) * 100 : 0;
+-  scrollProgress.style.width = `${p}%`;
+-
+-  if (scrolled > 500) toTop.classList.add("show");
+-  else toTop.classList.remove("show");
+-}
+-window.addEventListener("scroll", onScroll);
+-onScroll();
+-
+-toTop.addEventListener("click", () => {
+-  window.scrollTo({ top: 0, behavior: "smooth" });
+-});
+-
+-// ================== ГОД В ФУТЕРЕ ==================
+-document.getElementById("year").textContent = new Date().getFullYear();
+-
+-// ================== ДАННЫЕ УЧИТЕЛЕЙ (БОЛЬШЕ) ==================
+-const teachers = [
+-  {
+-    name: "Ольга Викторовна",
+-    subject: "Математика",
+-    desc: "Победитель «Учитель года», 15 лет опыта подготовки к олимпиадам.",
+-    photo: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80",
+-    cabinet: "205",
+-    email: "math@licei-bud.kz"
+-  },
+-  {
+-    name: "Артём Игоревич",
+-    subject: "Английский язык",
+-    desc: "Разговорные клубы, подготовка к международным экзаменам, проекты на английском.",
+-    photo: "https://images.unsplash.com/photo-1601412436009-d964bd02edbc?auto=format&fit=crop&w=1000&q=80",
+-    cabinet: "210",
+-    email: "eng@licei-bud.kz"
+-  },
+-  {
+-    name: "Елена Сергеевна",
+-    subject: "Информатика",
+-    desc: "Python, веб-разработка и робототехника. Помогает собрать портфолио.",
+-    photo: "https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&w=1000&q=80",
+-    cabinet: "402",
+-    email: "it@licei-bud.kz"
+-  },
+-  {
+-    name: "Сергей Константинович",
+-    subject: "Физика",
+-    desc: "Лабораторные, эксперименты и подготовка к олимпиадам. Стаж 12 лет.",
+-    photo: "https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=1000&q=80",
+-    cabinet: "320",
+-    email: "physics@licei-bud.kz"
+-  },
+-  {
+-    name: "Наталья Николаевна",
+-    subject: "Музыка",
+-    desc: "Вокал, ансамбль и выступления. Готовит школьные концерты.",
+-    photo: "https://images.unsplash.com/photo-1524503033411-fd26f86da3e0?auto=format&fit=crop&w=1000&q=80",
+-    cabinet: "217",
+-    email: "music@licei-bud.kz"
+-  },
+-  {
+-    name: "Ирина Михайловна",
+-    subject: "История",
+-    desc: "Дебаты, анализ источников, подготовка к экзаменам и проектным работам.",
+-    photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80",
+-    cabinet: "301",
+-    email: "history@licei-bud.kz"
+-  },
+-  {
+-    name: "Данияр Рустемович",
+-    subject: "Химия",
+-    desc: "Практикумы, безопасные опыты, олимпиадная подготовка. Стаж 10 лет.",
+-    photo: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1000&q=80",
+-    cabinet: "312",
+-    email: "chem@licei-bud.kz"
+-  },
+-  {
+-    name: "Виктория Андреевна",
+-    subject: "Биология",
+-    desc: "Кружок «Юный биолог», проекты и экология. Много практики.",
+-    photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1000&q=80",
+-    cabinet: "318",
+-    email: "bio@licei-bud.kz"
+-  }
+-];
+-
+-const teachersSlider = document.getElementById("teachersSlider");
+-
+-function renderTeachers() {
+-  teachersSlider.innerHTML = "";
+-  teachers.forEach(t => {
+-    const card = document.createElement("article");
+-    card.className = "card teacher-card";
+-    card.innerHTML = `
+-      <img src="${t.photo}" alt="${t.subject}" loading="lazy" />
+-      <div class="pad">
+-        <h3>${t.name}</h3>
+-        <p class="subject">${t.subject}</p>
+-        <p class="muted">${t.desc}</p>
+-        <div class="teacher-meta">
+-          <span class="pill"><i class="ti ti-door"></i> Каб. ${t.cabinet}</span>
+-          <span class="pill"><i class="ti ti-mail"></i> ${t.email}</span>
+-        </div>
+-      </div>
+-    `;
+-    teachersSlider.appendChild(card);
+-  });
+-}
+-renderTeachers();
+-
+-// Плавное "перелистывание" слайдера
+-const prevBtn = document.getElementById("teachersPrev");
+-const nextBtn = document.getElementById("teachersNext");
+-
+-function slideBy(direction) {
+-  const card = teachersSlider.querySelector(".teacher-card");
+-  const step = card ? (card.getBoundingClientRect().width + 14) : 340;
+-  teachersSlider.scrollBy({ left: direction * step, behavior: "smooth" });
+-}
+-
+-prevBtn.addEventListener("click", () => slideBy(-1));
+-nextBtn.addEventListener("click", () => slideBy(1));
+-
+-// ================== СЧЁТЧИКИ (статистика) ==================
+-const counters = document.querySelectorAll(".stat-number");
+-let countersStarted = false;
+-
+-function animateCount(el, to) {
+-  const dur = 900;
+-  const start = performance.now();
+-  const from = 0;
+-
+-  function tick(now) {
+-    const t = Math.min(1, (now - start) / dur);
+-    const val = Math.round(from + (to - from) * (1 - Math.pow(1 - t, 3)));
+-    el.textContent = val + (to === 92 || to === 98 ? "%" : "");
+-    if (t < 1) requestAnimationFrame(tick);
+-  }
+-  requestAnimationFrame(tick);
+-}
+-
+-const statsSection = document.getElementById("stats");
+-const statsObs = new IntersectionObserver((entries) => {
+-  entries.forEach(ent => {
+-    if (!ent.isIntersecting || countersStarted) return;
+-    countersStarted = true;
+-
+-    counters.forEach(el => {
+-      const to = Number(el.dataset.count || "0");
+-      animateCount(el, to);
+-    });
+-
+-    // Прогресс-бары
+-    document.querySelectorAll(".bar").forEach(b => b.classList.add("ready"));
+-  });
+-}, { threshold: 0.25 });
+-
+-if (statsSection) statsObs.observe(statsSection);
+-
+-// ================== ГАЛЕРЕЯ + МОДАЛКА ==================
+-const galleryData = [
+-  { url: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80", cap: "Проектная работа" },
+-  { url: "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?auto=format&fit=crop&w=1200&q=80", cap: "Урок в классе" },
+-  { url: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80", cap: "Командная работа" },
+-  { url: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=80", cap: "Олимпиадная подготовка" },
+-  { url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80", cap: "Библиотека" },
+-  { url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80", cap: "Выпускной" },
+-  { url: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80", cap: "Спортивный день" },
+-  { url: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=80", cap: "Экскурсия" }
+-];
+-
+-const galleryGrid = document.getElementById("galleryGrid");
+-const imgModal = document.getElementById("imgModal");
+-const modalImg = document.getElementById("modalImg");
+-
+-function openModal(src) {
+-  modalImg.src = src;
+-  imgModal.classList.add("show");
+-  imgModal.setAttribute("aria-hidden", "false");
+-  document.body.style.overflow = "hidden";
+-}
+-
+-function closeModal() {
+-  imgModal.classList.remove("show");
+-  imgModal.setAttribute("aria-hidden", "true");
+-  modalImg.src = "";
+-  document.body.style.overflow = "";
+-}
+-
+-function renderGallery() {
+-  if (!galleryGrid) return;
+-  galleryGrid.innerHTML = "";
+-  galleryData.forEach((g, idx) => {
+-    const item = document.createElement("div");
+-    item.className = "gallery-item";
+-    item.innerHTML = `
+-      <img src="${g.url}" alt="${g.cap}" loading="lazy" />
+-      <div class="cap">${g.cap}</div>
+-    `;
+-    item.addEventListener("click", () => openModal(g.url));
+-    galleryGrid.appendChild(item);
+-  });
+-}
+-renderGallery();
+-
+-imgModal?.addEventListener("click", (e) => {
+-  if (e.target && e.target.dataset && e.target.dataset.close) closeModal();
+-});
+-
+-window.addEventListener("keydown", (e) => {
+-  if (e.key === "Escape" && imgModal.classList.contains("show")) closeModal();
+-});
+-
+-// ================== ФОРМА (демо) ==================
+-const contactForm = document.getElementById("contactForm");
+-const formHint = document.getElementById("formHint");
+-
+-contactForm?.addEventListener("submit", (e) => {
+-  e.preventDefault();
+-  const fd = new FormData(contactForm);
+-  const name = (fd.get("name") || "").toString().trim();
+-  formHint.textContent = `Спасибо, ${name || "друг"}! Заявка отправлена (демо).`;
+-  contactForm.reset();
+-});
++:root {
++  --bg: #f4f7fd;
++  --panel: #ffffff;
++  --text: #1b2540;
++  --muted: #66708a;
++  --line: #dae2f3;
++  --brand: #376dff;
++  --brand-2: #634bff;
++  --shadow: 0 12px 30px rgba(21, 34, 66, 0.08);
++}
++
++[data-theme='dark'] {
++  --bg: #0c1324;
++  --panel: #131d33;
++  --text: #e9efff;
++  --muted: #9caad0;
++  --line: #273553;
++  --brand: #62ceff;
++  --brand-2: #7d66ff;
++  --shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
++}
++
++* { box-sizing: border-box; }
++html { scroll-behavior: smooth; }
++body {
++  margin: 0;
++  font-family: 'Inter', system-ui, sans-serif;
++  color: var(--text);
++  background:
++    radial-gradient(circle at 12% 8%, rgba(55,109,255,0.18), transparent 34%),
++    radial-gradient(circle at 88% 16%, rgba(99,75,255,0.12), transparent 30%),
++    var(--bg);
++}
++
++.container { width: min(1160px, 92%); margin: 0 auto; }
++.section { padding: 1.6rem 0 2rem; }
++
++.site-header {
++  position: sticky;
++  top: 0;
++  z-index: 20;
++  background: color-mix(in srgb, var(--bg) 84%, transparent);
++  backdrop-filter: blur(8px);
++  border-bottom: 1px solid var(--line);
++}
++
++.nav {
++  display: flex;
++  gap: .8rem;
++  align-items: center;
++  justify-content: space-between;
++  padding: .75rem 0;
++}
++
++.logo {
++  text-decoration: none;
++  color: var(--text);
++  display: inline-flex;
++  align-items: center;
++  gap: .45rem;
++  font-weight: 800;
++}
++
++.menu {
++  display: flex;
++  flex-wrap: wrap;
++  justify-content: center;
++  gap: .45rem;
++}
++
++.menu a,
++.btn,
++.theme-btn {
++  text-decoration: none;
++  color: var(--text);
++  border: 1px solid var(--line);
++  background: var(--panel);
++  border-radius: 12px;
++  padding: .5rem .75rem;
++  display: inline-flex;
++  align-items: center;
++  gap: .35rem;
++  transition: transform .2s ease, box-shadow .2s ease;
++}
++
++.menu a:hover,
++.btn:hover,
++.theme-btn:hover {
++  transform: translateY(-2px);
++  box-shadow: var(--shadow);
++}
++
++.theme-btn { cursor: pointer; }
++
++.hero {
++  padding: 2rem 0;
++  display: grid;
++  grid-template-columns: 1.05fr .95fr;
++  gap: 1.2rem;
++  align-items: center;
++}
++
++.badge {
++  display: inline-flex;
++  align-items: center;
++  gap: .35rem;
++  background: var(--panel);
++  border: 1px solid var(--line);
++  border-radius: 999px;
++  padding: .45rem .7rem;
++}
++
++h1 { font-size: clamp(1.65rem, 3vw, 2.9rem); margin: .6rem 0; }
++h2 { margin: 0 0 .8rem; }
++.lead, .muted { color: var(--muted); line-height: 1.6; }
++
++.cta-row { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .6rem; }
++.btn.primary {
++  border: none;
++  color: #fff;
++  background: linear-gradient(135deg, var(--brand), var(--brand-2));
++}
++
++.hero-image {
++  width: 100%;
++  min-height: 310px;
++  object-fit: cover;
++  border-radius: 20px;
++  border: 1px solid var(--line);
++}
++
++.stats {
++  margin-top: 1rem;
++  display: grid;
++  grid-template-columns: repeat(3, minmax(100px, 1fr));
++  gap: .7rem;
++}
++
++.stats article,
++.card {
++  background: var(--panel);
++  border: 1px solid var(--line);
++  border-radius: 16px;
++  box-shadow: var(--shadow);
++}
++
++.stats article { padding: .75rem; }
++.stats strong { display: block; font-size: 1.7rem; line-height: 1; }
++.stats span { color: var(--muted); font-size: .92rem; }
++
++.grid { display: grid; gap: 1rem; }
++.grid.three { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
++.grid.two { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
++.card { padding: 1rem; }
++.card p { color: var(--muted); }
++.card img { width: 100%; max-height: 210px; object-fit: cover; border-radius: 12px; margin-bottom: .7rem; }
++
++.schedule-table {
++  width: 100%;
++  border-collapse: collapse;
++  font-size: .88rem;
++}
++.schedule-table th, .schedule-table td {
++  text-align: left;
++  border-bottom: 1px solid var(--line);
++  padding: .35rem 0;
++}
++
++.calendar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .8rem; }
++.month {
++  background: var(--panel);
++  border: 1px solid var(--line);
++  border-radius: 14px;
++  padding: .7rem;
++}
++.month h4 { margin: 0 0 .45rem; }
++.month table { width: 100%; border-collapse: collapse; font-size: .78rem; }
++.month th, .month td { text-align: center; color: var(--muted); padding: .2rem; }
++.month .day { border-radius: 6px; background: color-mix(in srgb, var(--brand) 25%, transparent); color: var(--text); }
++
++.site-footer { border-top: 1px solid var(--line); margin-top: 1rem; }
++.footer-inner {
++  min-height: 66px;
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  gap: .8rem;
++  color: var(--muted);
++}
++.footer-inner a { color: var(--brand); text-decoration: none; display: inline-flex; gap: .35rem; }
++
++.page-fade {
++  position: fixed;
++  inset: 0;
++  background: var(--bg);
++  opacity: 0;
++  pointer-events: none;
++  z-index: 999;
++  transition: opacity .25s ease;
++}
++.page-fade.visible { opacity: 0.95; }
++
++@media (max-width: 960px) {
++  .hero { grid-template-columns: 1fr; }
++}
